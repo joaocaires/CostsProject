@@ -21,11 +21,14 @@ function Projects(){
         fetch('http://localhost:5000/projects', {
             method: 'GET',
             headers: {
-                'Content-Type' : 'application/json',
+                'Content-Type': 'application/json',
             },
+        }) 
+        .then((resp) => resp.json())
+        .then((data) => {
+            console.log(data)
+            setProjects(data)
         })
-        .then(resp => resp.json())
-        .then(data => {console.log(data)})
         .catch((err) => console.log(err))
     }, [])
 
@@ -33,19 +36,18 @@ function Projects(){
         <div className={styles.project_container}>
             <div className={styles.title_container}>
                 <h1>My Projects</h1>
-                <LinkButton to="/newproject" text="Create Projects"/>
             </div>
-
-            {message && <Message msg={message} type="sucess"/>}
+            {message && <Message type="sucess" msg={message}/>}
             <Container customClass="start">
                 {projects.length > 0 && projects.map((project) => (
-                <ProjectCard 
-                id={project.id}
-                name={project.name}
-                budget={project.budget}
-                category={project.category.name}
-                key={project.id}
-                />))}
+                    <ProjectCard 
+                    id = {project.id}
+                    name={project.name}
+                    budget={project.budget}
+                    category={project.category.name}
+                    key={project.id}
+                    />
+                ))}
             </Container>
         </div>
     )

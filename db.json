@@ -10,6 +10,17 @@
       },
       "costs": 0,
       "services": []
+    },
+    {
+      "id": "055a",
+      "name": "Capybara",
+      "budget": "1000000",
+      "category": {
+        "id": "4",
+        "name": "Planning"
+      },
+      "costs": 0,
+      "services": []
     }
   ],
   "categories": [
@@ -19,15 +30,15 @@
     },
     {
       "id": "2",
-      "name": "Desenvolvimento"
+      "name": "Development"
     },
     {
       "id": "3",
-      "name": "Desing"
+      "name": "Design"
     },
     {
       "id": "4",
-      "name": "Planejamento"
+      "name": "Planning"
     }
   ]
 }
