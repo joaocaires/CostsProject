@@ -1,17 +1,6 @@
 {
   "projects": [
     {
-      "id": "3d47",
-      "name": "Tst Project",
-      "budget": "10000",
-      "category": {
-        "id": "3",
-        "name": "Desing"
-      },
-      "costs": 0,
-      "services": []
-    },
-    {
       "id": "055a",
       "name": "Capybara",
       "budget": "1000000",
