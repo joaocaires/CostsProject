@@ -10,6 +10,7 @@ function Project(){
     const { id } = useParams()
     const [project, setProject] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
+    const [showServiceForm, setShowServiceForm] = useState(false)
         
         useEffect(() => {
             setTimeout(() => {
@@ -48,6 +49,10 @@ function Project(){
             setShowProjectForm(!showProjectForm)
         }
 
+        function toggleServiceForm(){
+            setShowServiceForm(!showServiceForm)
+        }
+
     return(
         <>
             {project.name ? (
@@ -76,6 +81,19 @@ function Project(){
                             </div>
                         )}
                     </div>
+                    <div className={style.service_form_container}>
+                        <h2>Add Service:</h2>
+                        <button className={style.btn} onClick={toggleServiceForm}>
+                            {!showServiceForm ? 'Add service' : 'Close'}
+                        </button>
+                        <div className={style.service_form_container}>
+                            {showServiceForm && <div>Service Form</div>}
+                        </div>
+                    </div>
+                    <h2>Services</h2>
+                    <Container customClass='start'>
+                        <p>Services itens</p>
+                    </Container>
                 </Container>
             </div>
             ) : (
