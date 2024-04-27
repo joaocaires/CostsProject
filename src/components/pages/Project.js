@@ -1,6 +1,7 @@
 import style from './Project.module.css'
 import Loading from '../layout/Loading'
 import Container from '../layout/Container'
+import ProjectForm from '../project/ProjectForm'
 
 import { useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -26,6 +27,22 @@ function Project(){
 
             }, 300)
         }, [id])
+
+        function editPost(project){
+            fetch(`http://localhost:5000/projects/${project.id}`,{
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(project),
+            })
+            .then(res => res.json())
+            .then((data) => {
+                setProject(data)
+                setShowProjectForm(false)
+            })
+            .catch(err => console.log(err))
+        }
 
         function toggleProjectForm(){
             setShowProjectForm(!showProjectForm)
@@ -55,7 +72,7 @@ function Project(){
                             </div>
                         ) : (
                             <div className={style.project_info}>
-                                <p>Project Details</p>
+                                <ProjectForm handleSubmit={editPost} btnText="Finish Edit" projectData={project}/>
                             </div>
                         )}
                     </div>

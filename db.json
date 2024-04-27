@@ -2,8 +2,8 @@
   "projects": [
     {
       "id": "055a",
-      "name": "Capybara",
-      "budget": "1000000",
+      "name": "Capybara2",
+      "budget": "1000001",
       "category": {
         "id": "4",
         "name": "Planning"
