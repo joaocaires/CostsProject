@@ -9,27 +9,19 @@
         "name": "Planning"
       },
       "costs": 0,
-      "services": [
-        {
-          "name": "Tst Project",
-          "description": "acv",
-          "cost": "12",
-          "id": "41d5c38f-19ee-465c-9681-3907f0773145"
-        },
-        {
-          "name": "Tst Project",
-          "description": "acv",
-          "cost": "12",
-          "id": "41d5c38f-19ee-465c-9681-3907f0773145"
-        },
-        {
-          "name": "ab",
-          "cost": "122",
-          "description": "acx",
-          "id": "fe2a1b1f-c519-44fc-ba52-dec7bb5028f9"
-        }
-      ],
+      "services": [],
       "cost": null
+    },
+    {
+      "id": "4189",
+      "name": "Dog and Cat",
+      "budget": "122",
+      "category": {
+        "id": "2",
+        "name": "Development"
+      },
+      "costs": 0,
+      "services": []
     }
   ],
   "categories": [
