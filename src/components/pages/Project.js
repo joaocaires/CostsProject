@@ -3,6 +3,7 @@ import Loading from '../layout/Loading'
 import Container from '../layout/Container'
 import ProjectForm from '../project/ProjectForm'
 import ServiceForm from '../services/ServiceForm'
+import ServiceCard from '../services/ServiceCard'
 
 import { json, useParams } from 'react-router-dom'
 import { useState, useEffect } from 'react'
@@ -13,6 +14,7 @@ function Project(){
     const [project, setProject] = useState([])
     const [showProjectForm, setShowProjectForm] = useState(false)
     const [showServiceForm, setShowServiceForm] = useState(false)
+    const [services, setServices] = useState([])
         
         useEffect(() => {
             setTimeout(() => {
@@ -25,6 +27,7 @@ function Project(){
             .then((resp) => resp.json())
             .then((data) => {
                 setProject(data)
+                setServices(data.services)
             })
             .catch(err => console.log(err))
 
@@ -63,17 +66,21 @@ function Project(){
             project.cost = newCost
 
             fetch(`http://localhost:5000/projects/${project.id}`, {
-                method: 'PATH',
+                method: 'PATCH',
                 headers:{
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(project)
+                body: JSON.stringify(project),
             })
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
+                setShowServiceForm(false)
             })
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err))
+        }
+
+        function removeService(){
+
         }
 
         function toggleProjectForm(){
@@ -130,7 +137,19 @@ function Project(){
                     </div>
                     <h2>Services</h2>
                     <Container customClass='start'>
-                        <p>Services itens</p>
+                        {services.length > 0 &&
+                            services.map((service) => (
+                                <ServiceCard 
+                                    id={service.id}
+                                    name={service.name}
+                                    cost={service.cost}
+                                    description={service.description}
+                                    key={service.id}
+                                    handleRemove={removeService}
+                                />
+                            ))
+                        }
+                        {services.length === 0 && <p>There are no registered services</p>}
                     </Container>
                 </Container>
             </div>
